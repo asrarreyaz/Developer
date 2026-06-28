@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asrar Reyaz - Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-gutter: stable;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #0a0a0a;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #4ade80;
+            box-shadow: 0 2px 10px rgba(74, 222, 128, 0.1);
+            flex-shrink: 0;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            min-height: 60px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ade80;
+            flex-shrink: 0;
+            z-index: 101;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-shrink: 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background-color: #4ade80;
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            width: 30px;
+            height: 24px;
+            justify-content: center;
+            position: relative;
+            z-index: 102;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #4ade80;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: block;
+            position: absolute;
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 10px; opacity: 1; }
+        .hamburger span:nth-child(3) { bottom: 0; }
+
+        .hamburger.active span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+
+        /* Overlay for mobile menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 98;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000000 0%, #0a0a2e 50%, #000000 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 30%;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: 10%;
+            right: 5%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            position: relative;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            color: #4ade80;
+            animation: slideInDown 0.8s ease;
+            margin: 0;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: #ffffff;
+            animation: slideInDown 0.8s ease 0.1s backwards;
+            margin: 0;
+        }
+
+        .hero-content .description {
+            font-size: 1.2rem;
+            color: #cccccc;
+            line-height: 1.8;
+            max-width: 700px;
+            animation: slideInUp 0.8s ease 0.2s backwards;
+            margin: 0;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 0.8s ease 0.3s backwards;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: #000000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #4ade80;
+            border: 2px solid #4ade80;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4ade80;
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        /* ============ Responsive Navigation (Sidebar) ============ */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 1.5rem; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: #0a0a0a;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 80px;
+                padding-left: 20px;
+                padding-right: 20px;
+                gap: 1.5rem;
+                border-left: 2px solid #4ade80;
+                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+                z-index: 99;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                text-align: left;
+                width: 100%;
+                padding: 15px 20px;
+                border-radius: 8px;
+            }
+
+            .hamburger { display: flex; }
+
+            .hero {
+                min-height: 95vh;
+                padding: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            .hero-content .description {
+                font-size: 1.1rem;
+            }
+            .cta-buttons {
+                gap: 1rem;
+                width: 100%;
+                padding: 0 0.5rem;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .hero::before,
+            .hero::after {
+                width: 300px;
+                height: 300px;
+                opacity: 0.5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar { padding: 0 1rem; min-height: 55px; }
+            .nav-links { width: 250px; }
+            .logo { font-size: 1.3rem; }
+            .hamburger { width: 28px; height: 22px; gap: 5px; }
+            .hamburger span { height: 2.5px; }
+            .hamburger span:nth-child(2) { top: 9px; }
+
+            .hero {
+                min-height: 90vh;
+                padding: 1rem 0.5rem;
+                justify-content: center;
+            }
+
+            .hero-content {
+                gap: 1.5rem;
+                padding: 0 0.5rem;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .hero-content .subtitle {
+                font-size: 1rem;
+            }
+            .hero-content .description {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .cta-buttons {
+                gap: 0.8rem;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0;
+            }
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+            }
+
+            .hero::before,
+            .hero::after {
+                width: 200px;
+                height: 200px;
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <nav>
+        <div class="navbar">
+            <div class="logo">Asrar Reyaz</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="developer.html">Developer</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Asrar Reyaz</h1>
+            <p class="subtitle">Web Developer | HTML | CSS | JavaScript</p>
+            <p class="description">Passionate about creating beautiful, functional, and innovative web experiences. I build responsive applications with modern technologies and deliver solutions that make an impact.</p>
+            <div class="cta-buttons">
+                <a href="developer.html" class="btn btn-primary">View My Profile</a>
+                <a href="projects.html" class="btn btn-secondary">See My Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu when clicking on the overlay
+        menuOverlay.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
-# 👋 Hi, I'm Asrar Riyaz
+# 👋 Hi, I'm Asrar Reyaz
 
 ## 💻 Developer Profile
 
-Welcome to my GitHub profile! I'm **Asrar Riyaz**, a passionate developer who enjoys learning new technologies and building projects that solve real-world problems.
+Welcome to my GitHub profile! I'm **Asrar Reyaz**, a passionate developer who enjoys learning new technologies and building projects that solve real-world problems.
 
 ---
 
@@ -34,21 +34,9 @@ Check out my repositories to see the projects I've been working on.
 
 ## 📫 Connect With Me
 
-- **GitHub:** https://github.com/your-username
-- **LinkedIn:** Add your LinkedIn profile
-- **Email:** your-email@example.com
+- **GitHub:** https://github.com/asrarreyaz
+- **Email:** asrarreyaz999@gmail.com
 
----
-
- ## 📊 GitHub Stats
-
-You can add these GitHub Readme Stats cards:
-
-```md
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=tokyonight)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&layout=compact&theme=tokyonight)
-```
 
 ---
 
@@ -59,4 +47,3 @@ You can add these GitHub Readme Stats cards:
 ---
 
 ⭐ Thanks for visiting my profile! Feel free to explore my repositories and connect with me.
-

@@ -1,8 +1,8 @@
-# 👋 Hi, I'm Asrar Reyaz
+# 👋 Hi, I'm Asrar Riyaz
 
 ## 💻 Developer Profile
 
-Welcome to my GitHub profile! I'm **Asrar Reyaz**, a passionate developer who enjoys learning new technologies and building projects that solve real-world problems.
+Welcome to my GitHub profile! I'm **Asrar Riyaz**, a passionate developer who enjoys learning new technologies and building projects that solve real-world problems.
 
 ---
 

@@ -109,10 +109,12 @@
         .hamburger span:nth-child(1) {
             top: 0;
         }
+
         .hamburger span:nth-child(2) {
             top: 10px;
             opacity: 1;
         }
+
         .hamburger span:nth-child(3) {
             bottom: 0;
         }
@@ -121,9 +123,11 @@
             top: 50%;
             transform: translateY(-50%) rotate(45deg);
         }
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
+
         .hamburger.active span:nth-child(3) {
             bottom: 50%;
             transform: translateY(50%) rotate(-45deg);
@@ -142,6 +146,7 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
+
         .menu-overlay.active {
             display: block;
             opacity: 1;
@@ -151,9 +156,11 @@
         .certificate-section {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            gap: 3rem;
             background: linear-gradient(135deg, #000000 0%, #0a0a2e 50%, #000000 100%);
             position: relative;
             overflow: hidden;
@@ -166,9 +173,10 @@
             height: 400px;
             background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            top: 20%;
+            top: 10%;
             left: 5%;
             animation: float 6s ease-in-out infinite;
+            pointer-events: none;
         }
 
         .certificate-section::after {
@@ -178,14 +186,20 @@
             height: 400px;
             background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            bottom: 20%;
+            bottom: 10%;
             right: 5%;
             animation: float 8s ease-in-out infinite;
+            pointer-events: none;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(30px);
+            }
         }
 
         .certificate-container {
@@ -209,8 +223,10 @@
 
         .certificate-img {
             width: 100%;
+            height: auto;
             display: block;
             border-radius: 8px;
+            object-fit: contain;
         }
 
         .certificate-caption {
@@ -265,7 +281,13 @@
             }
 
             .certificate-section {
-                padding: 1rem;
+                padding: 2rem 1rem;
+                gap: 2rem;
+            }
+
+            .certificate-container {
+                width: 95%;
+                padding: 6px;
             }
         }
 
@@ -274,25 +296,42 @@
                 padding: 0 1rem;
                 min-height: 55px;
             }
+
             .nav-links {
                 width: 250px;
             }
+
             .logo {
                 font-size: 1.3rem;
             }
+
             .hamburger {
                 width: 28px;
                 height: 22px;
                 gap: 5px;
             }
+
             .hamburger span {
                 height: 2.5px;
             }
+
             .hamburger span:nth-child(2) {
                 top: 9px;
             }
+
+            .certificate-section {
+                padding: 1.5rem 0.8rem;
+                gap: 1.5rem;
+            }
+
             .certificate-container {
+                width: 98%;
                 padding: 4px;
+            }
+
+            .certificate-caption {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
             }
         }
     </style>
@@ -362,4 +401,5 @@
         });
     </script>
 </body>
+
 </html>
